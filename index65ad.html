@@ -22,6 +22,55 @@
 
 
   <style>
+     .custom__form .agree_wrapper{
+      margin-bottom: 10px;
+      display: flex;
+    }
+    .custom__form p{
+      color: #fff !important;
+    }
+    .custom__form .iagree{
+      color: #fff;
+    }
+    .custom__form .form-group{
+      margin-bottom: 0;
+    }
+    .custom__form .submit_btn.submit {
+    background-color: transparent;
+    width: 100%;
+    color: #fff;
+    border-color: #fff;
+    font-size: 17px;
+    border-radius: 5px;
+}
+    .custom__form .iagree{
+      font-style: normal;
+    font-family: sans-serif;
+    }
+    .custom__form input, .custom__form select{
+      font-style: normal;
+    font-family: sans-serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 42px;
+    box-shadow: none;
+    border: 1px solid #000000;
+    }
+    .custom__form .iagree_input{
+      margin-right: 10px;
+    }
+    .custom__form .iagree_input, .custom__form label{
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    .custom__form {
+    /* background-color: #f7cf3c; */
+    background-color: #0c2b57;
+    padding: 50px 40px;
+    /* border-radius: 20px; */
+    margin: 0;
+    margin-bottom: 30px;
+}
     #article-tweet {
       display: none;
     }
@@ -631,7 +680,113 @@
 
         <i>
           <div class="col-md-4" bis_skin_checked="1">
-
+            <div class="row custom__form">
+              <div class="col-12">
+                <p class="text-center color-light">Our smart investing can make you thousands in less than 7 days</p>
+                <div class="form_wrapper whiteLabel_form">								
+                  <form class="mainForm" method="POST" name="regForm" target="_top" f="native_ajfrm" novalidate="novalidate">
+                    <input name="formName" type="hidden" value="regForm">
+                    <input name="thankyouPage" type="hidden" value="https:///">	
+                
+                    <div class="form-group">
+                        <div id="container_customerLeadEmail" class="col">
+                            <input type="email" placeholder="Email" class="text form_elem_customerLeadEmail form-control" name="email" id="customerLeadEmail" maxlength="50" required="" aria-required="true">
+                            <label for="customerLeadEmail"></label>
+                        </div>
+                
+                        <div id="container_customerLeadFirstName" class="col">
+                            <input type="text" placeholder="Full Name" class="text form_elem_fullName form-control" name="fullName" id="fullName" required="" minlength="1" maxlength="40" aria-required="true">
+                            <label for="fullName"></label>
+                        </div>
+                
+                        <div id="container_countryId">
+                            <div class="styled-select col">
+                                <select class="text form_elem_countryId form-control" name="countryCodeISO2" id="countryId" required="" aria-required="true">
+                                    <option cncode="" value="" selected="selected">Country</option>
+                                    <option cncode="" value="" selected="selected">Country</option><option cncode="93" value="AF">Afghanistan<span class="areaCodePend"> (+93)</span></option><option cncode="358" value="AX">Aland Islands<span class="areaCodePend"> (+358)</span></option>
+                                </select>
+                            </div>
+                            <label for="countryId"></label>
+                        </div>
+                
+                        <div id="container_phoneNumber" class="col">
+                            <input type="hidden" class="text form_elem_countryCode" name="phoneCountryCode" id="countryCode" maxlength="4" required="" aria-required="true">
+                            <input type="tel" placeholder="Phone Number" class="text form_elem_phoneNumber form-control" name="phoneNumber" id="phoneNumber" required="" minlength="5" maxlength="15" aria-required="true">
+                            <label for="countryCode"></label>
+                            <label for="phoneNumber"></label>
+                        </div>
+                
+                        <!-- Hidden form fields -->
+                        <input type="hidden" value="000" name="areaCode" id="areaCode" class="areaCode">
+                        <input type="hidden" class="form_lang" value="en" name="lang" id="lang">
+                        <input type="hidden" value="0" name="trackingLinkId" id="trackingLinkId" class="trackingLinkId">
+                        <input type="hidden" value="1008344" name="affiliateId" id="affiliateId" class="affiliateId">
+                        <input type="hidden" value="" name="grp" id="grp" class="grp">
+                        <input type="hidden" value="0" name="euid" id="euid" class="euid">
+                        <input type="hidden" value="" name="pubid" id="pubid" class="pubid">
+                        <input type="hidden" name="affTrack" id="affTrack" class="affTrack" value="">
+                        <input type="hidden" name="affToken" id="affToken" class="affToken" value="E36CB4183F">
+                        <input type="hidden" name="affTags" id="affTags" class="affTags" value="">
+                        <input type="hidden" name="affClickId" id="affClickId" class="affClickId" value="">
+                        <input value="OPT_IN" name="emailOpt" type="hidden">
+                        <input value="generic" name="brand" type="hidden">
+                        <input type="hidden" value="" name="gcid" id="gcid" class="gcid">
+                    </div>
+                
+                    <div class="agree_wrapper">
+                        <input value="OPT_IN" name="emailOpt" id="emailOpt" class="iagree_input" style="height: auto;" type="checkbox" checked="1" required="1" aria-required="true">
+                        <label for="emailOpt">
+                            <span class="iagree">
+                                <span class="" style="font-size:11px;" tmp="1">I agree to receive emails</span>
+                            </span>
+                        </label>
+                    </div>
+                
+                    <div class="button_wrapper form-check">
+                        <div class="submit_btn_wrapper lp-pom-form-field clearfix">
+                            <input class="submit_btn submit btn" type="button" value="submit" id="sendData" onclick="submitForm()">
+                        </div>
+                    </div>
+                </form>
+                
+                <script>
+                    function submitForm() {
+                        var email = document.getElementById('customerLeadEmail').value;
+                        var fullName = document.getElementById('fullName').value;
+                        var countryCodeISO2 = document.getElementById('countryId').value;
+                        var phoneCountryCode = document.getElementById('countryCode').value;
+                        var phoneNumber = document.getElementById('phoneNumber').value;
+                        var emailOpt = document.getElementById('emailOpt').checked ? 'OPT_IN' : 'OPT_OUT';
+                        var apiUrl = 'https://www.xtrade.com/api/lead/create/?' +
+                            'email=' + encodeURIComponent(email) +
+                            '&fullName=' + encodeURIComponent(fullName) +
+                            '&countryCodeISO2=' + encodeURIComponent(countryCodeISO2) +
+                            '&phoneCountryCode=' + encodeURIComponent(phoneCountryCode) +
+                            '&phoneNumber=' + encodeURIComponent(phoneNumber) +
+                            '&emailOpt=' + encodeURIComponent(emailOpt);
+                        
+                        fetch(apiUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            // Handle success response
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            // Handle error
+                        });
+                    }
+                </script>
+                
+              
+                </div>
+              </div>
+            </div>
             <h5 class="m-b-0 pink-border-bottom">
               <a href="file:///C:/Users/pc/Downloads/crypto-in-hindi/crypto-in-hindi/index65ad.html#LINK#?" style="text-decoration: none; color: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Readers' results</font></font></a>
             </h5>
