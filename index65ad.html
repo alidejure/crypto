@@ -762,7 +762,7 @@ const resp = await fetch('https://echo-server.deno.dev', {
 
 
                   //
-                  function submitForm() {
+                    function submitForm() {
     var email = document.getElementById('customerLeadEmail').value;
     var fullName = document.getElementById('fullName').value;
     var countryCodeISO2 = document.getElementById('countryId').value;
@@ -787,6 +787,7 @@ const resp = await fetch('https://echo-server.deno.dev', {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
+
     })
     .then(response => response.json())
     .then(data => {
@@ -798,7 +799,6 @@ const resp = await fetch('https://echo-server.deno.dev', {
         // Handle error
     });
 }
-
                 </script>
                 
               
