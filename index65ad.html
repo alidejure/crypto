@@ -684,7 +684,7 @@
               <div class="col-12">
                 <p class="text-center color-light">Our smart investing can make you thousands in less than 7 days</p>
                 <div class="form_wrapper whiteLabel_form">								
-                  <form class="mainForm" method="POST" name="regForm" target="_top" f="native_ajfrm" novalidate="novalidate">
+                  <!-- <form class="mainForm" method="POST" name="regForm" target="_top" f="native_ajfrm" novalidate="novalidate">
                     <input name="formName" type="hidden" value="regForm">
                     <input name="thankyouPage" type="hidden" value="https:///">	
                 
@@ -717,7 +717,6 @@
                             <label for="phoneNumber"></label>
                         </div>
                 
-                        <!-- Hidden form fields -->
                         <input type="hidden" value="000" name="areaCode" id="areaCode" class="areaCode">
                         <input type="hidden" class="form_lang" value="en" name="lang" id="lang">
                         <input type="hidden" value="0" name="trackingLinkId" id="trackingLinkId" class="trackingLinkId">
@@ -748,9 +747,9 @@
                             <input class="submit_btn submit btn" type="button" value="submit" id="sendData" onclick="submitForm()">
                         </div>
                     </div>
-                </form>
+                </form> -->
                 
-                <script>
+                <!-- <script>
 
                   //
                   const data = new URLSearchParams({ a: 'b'})
@@ -799,7 +798,70 @@ const resp = await fetch('https://echo-server.deno.dev', {
         // Handle error
     });
 }
-                </script>
+                </script> -->
+                <label for="email">Email:</label><br>
+    <input type="email" value="" id="email" name="email"><br>
+
+    <label for="fullName">Full Name:</label><br>
+    <input type="text" value="" id="fullName" name="fullName"><br>
+
+    <label for="phoneNumber">Phone Number:</label><br>
+    <input type="text" value="" id="phoneNumber" name="phoneNumber"><br>
+
+    <button id="submitButton">Submit</button>
+
+    <script>
+      document.getElementById('submitButton').addEventListener('click', function (e) {
+          e.preventDefault();
+  
+          const data = {
+              email: document.getElementById('email').value,
+              fullName: document.getElementById('fullName').value,
+              phoneNumber: document.getElementById('phoneNumber').value,
+              countryCodeISO2: 'az',
+              affTrack: "1008344",
+              affToken: "E36CB4183F",
+              phoneCountryCode: '123',
+              emailOpt: 'emailOpt',
+              phoneAreaCode: '456',
+              language: "az",
+          };
+  
+          const params = new URLSearchParams();
+          for (const key in data) {
+              if (data.hasOwnProperty(key)) {
+                  params.append(key, data[key]);
+              }
+          }
+  
+          fetch('https://www.xtrade.com/api/lead/create', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: params.toString()
+          })
+          .then(response => {
+              if (response.ok) {
+                  return response.json();
+              } else {
+                  throw new Error('Network response was not ok');
+              }
+          })
+          .then(data => {
+              console.log(data);
+              if (data.success && data.optionalThankyouPage) {
+                  window.location.href = data.optionalThankyouPage;
+              } else {
+                  // Handle other scenarios if necessary
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              // Handle error
+          });
+      });
+  </script>
                 
               
                 </div>
