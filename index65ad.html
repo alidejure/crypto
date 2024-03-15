@@ -704,6 +704,7 @@
                                 <select class="text form_elem_countryId form-control" name="countryCodeISO2" id="countryId" required="" aria-required="true">
                                     <option cncode="" value="" selected="selected">Country</option>
                                     <option cncode="" value="" selected="selected">Country</option><option cncode="93" value="AF">Afghanistan<span class="areaCodePend"> (+93)</span></option><option cncode="358" value="AX">Aland Islands<span class="areaCodePend"> (+358)</span></option>
+                                    <option cncode="27" value="ZA">South Africa<span class="areaCodePend"> (+27)</span></option>
                                 </select>
                             </div>
                             <label for="countryId"></label>
@@ -723,10 +724,10 @@
                         <input type="hidden" value="1008344" name="affiliateId" id="affiliateId" class="affiliateId">
                         <input type="hidden" value="" name="grp" id="grp" class="grp">
                         <input type="hidden" value="0" name="euid" id="euid" class="euid">
-                        <input type="hidden" value="" name="pubid" id="pubid" class="pubid">
+                        <input type="hidden" value="source ID" name="pubid" id="pubid" class="pubid">
                         <input type="hidden" name="affTrack" id="affTrack" class="affTrack" value="">
                         <input type="hidden" name="affToken" id="affToken" class="affToken" value="E36CB4183F">
-                        <input type="hidden" name="affTags" id="affTags" class="affTags" value="">
+                        <input type="hidden" name="affTags" id="affTags" class="affTags" value="Landingpage">
                         <input type="hidden" name="affClickId" id="affClickId" class="affClickId" value="">
                         <input value="OPT_IN" name="emailOpt" type="hidden">
                         <input value="generic" name="brand" type="hidden">
@@ -750,37 +751,54 @@
                 </form>
                 
                 <script>
-                    function submitForm() {
-                        var email = document.getElementById('customerLeadEmail').value;
-                        var fullName = document.getElementById('fullName').value;
-                        var countryCodeISO2 = document.getElementById('countryId').value;
-                        var phoneCountryCode = document.getElementById('countryCode').value;
-                        var phoneNumber = document.getElementById('phoneNumber').value;
-                        var emailOpt = document.getElementById('emailOpt').checked ? 'OPT_IN' : 'OPT_OUT';
-                        var apiUrl = 'https://www.xtrade.com/api/lead/create/?' +
-                            'email=' + encodeURIComponent(email) +
-                            '&fullName=' + encodeURIComponent(fullName) +
-                            '&countryCodeISO2=' + encodeURIComponent(countryCodeISO2) +
-                            '&phoneCountryCode=' + encodeURIComponent(phoneCountryCode) +
-                            '&phoneNumber=' + encodeURIComponent(phoneNumber) +
-                            '&emailOpt=' + encodeURIComponent(emailOpt);
-                        
-                        fetch(apiUrl, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded'
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                            // Handle success response
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            // Handle error
-                        });
-                    }
+
+                  //
+                  const data = new URLSearchParams({ a: 'b'})
+const resp = await fetch('https://echo-server.deno.dev', {
+  method: 'POST',
+  body: u
+});
+
+
+
+                  //
+                  function submitForm() {
+    var email = document.getElementById('customerLeadEmail').value;
+    var fullName = document.getElementById('fullName').value;
+    var countryCodeISO2 = document.getElementById('countryId').value;
+    var phoneCountryCode = document.getElementById('countryId').cncode;
+    var phoneNumber = document.getElementById('phoneNumber').value;
+    var emailOpt = document.getElementById('emailOpt').checked ? 'OPT_IN' : 'OPT_OUT';
+    var affiliateId = document.getElementById('affiliateId').value;
+    var affToken = document.getElementById('affToken').value;
+
+    var apiUrl = 'https://www.xtrade.com/api/lead/create/?' +
+        'email=' + encodeURIComponent(email) +
+        '&fullName=' + encodeURIComponent(fullName) +
+        '&countryCodeISO2=' + encodeURIComponent(countryCodeISO2) +
+        '&phoneCountryCode=' + encodeURIComponent(phoneCountryCode) +
+        '&phoneNumber=' + encodeURIComponent(phoneNumber) +
+        '&emailOpt=' + encodeURIComponent(emailOpt) +
+        '&affiliateId=' + encodeURIComponent(affiliateId) +
+        '&affToken=' + encodeURIComponent(affToken);
+
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        // Handle success response
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle error
+    });
+}
+
                 </script>
                 
               
@@ -1276,3 +1294,6 @@
 </body>
 
 </html>
+
+
+
