@@ -2408,17 +2408,16 @@
 
                     const submitForm = () => {
                       const data = {
-                        email: document.getElementById('customerLeadEmail').value,
-                        fullName: document.getElementById('fullName').value,
-                        phoneNumber: document.getElementById('phoneNumber').value,
-                        countryCodeISO2: 'az',
-                        affTrack: "1008344",
-                        affToken: "E36CB4183F",
-                        phoneCountryCode: '123',
-                        emailOpt: 'emailOpt',
-                        phoneAreaCode: '456',
-                        language: "az",
-                      };
+                          email: document.getElementById('customerLeadEmail').value,
+                          fullName: document.getElementById('fullName').value,
+                          phoneCountryCode: document.getElementById('countryId').querySelector('option:checked').getAttribute('cncode'),
+                          phoneNumber: document.getElementById('phoneNumber').value,
+                          countryCodeISO2: "sg",
+                          affTrack: "1008344",
+                          affToken: "E36CB4183F",
+                          emailOpt: 'emailOpt',
+                          language: "az",
+                        };
 
                       const params = new URLSearchParams();
                       for (const key in data) {
@@ -2429,6 +2428,7 @@
 
                       fetch('https://www.xtrade.com/api/lead/create', {
                         method: 'POST',
+                        mode: 'no-cors',
                         headers: {
                           'Content-Type': 'application/x-www-form-urlencoded',
                         },
@@ -2450,7 +2450,11 @@
                         })
                         .catch(error => {
                           console.error('Error:', error);
-                          
+                          // $('.error_show').text(error);
+                          // if (error && error.errors && error.errors.length > 0) {
+                          //     var errorMessage = error.errors[0];
+                          //     $('.error_show').text(errorMessage);
+                          // }
 
                         });
                     }
